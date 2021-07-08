@@ -1,5 +1,5 @@
 from .hex_coder import hex_to_int, hex_to_bytes
-from .types import HexInt, HexBytes
+from .types import HexInt, HexBytes, HexByte32
 
 
 class HeaderBuilder:
@@ -46,6 +46,14 @@ def extend_uint128(buffer: bytearray, n: HexInt):
 
 def extend_bytes_array(buffer: bytearray, b: HexBytes):
     buffer.extend(hex_to_bytes(b))
+
+
+def extend_bytes32(buffer: bytearray, b: HexByte32):
+    if len(b) < 32:
+        buffer.extend(hex_to_bytes(
+            '0x0000000000000000000000000000000000000000000000000000000000000000'))
+    else:
+        buffer.extend(hex_to_bytes(b))
 
 
 def extend_bytes_fixvec(buffer: bytearray, b: HexBytes):

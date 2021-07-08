@@ -11,6 +11,7 @@ tags
 Session.vim
 .ctrlp_*
 .env
+.venv
 .*.sw?
 .DS_Store
 py?env

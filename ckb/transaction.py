@@ -1,5 +1,5 @@
 from .hash import ckb_hash
-from .molecule import HeaderBuilder, extend_uint32, extend_uint64, extend_bytes_array, extend_bytes_fixvec
+from .molecule import HeaderBuilder, extend_uint32, extend_uint64, extend_bytes_array, extend_bytes_fixvec, extend_bytes32
 from .types import Transaction, TransactionTemplate, CellbaseTemplate, CellOutput, Script, HexH256
 
 
@@ -81,7 +81,7 @@ def extend_serialized_raw_transaction(buffer: bytearray, transaction: Transactio
 
     buffer.extend(len(transaction['header_deps']).to_bytes(4, 'little'))
     for header_dep in transaction['header_deps']:
-        extend_bytes_array(buffer, header_dep)
+        extend_bytes32(buffer, header_dep)
     transaction_header.finish_item()
 
     buffer.extend(len(transaction['inputs']).to_bytes(4, 'little'))
@@ -102,7 +102,8 @@ def extend_serialized_raw_transaction(buffer: bytearray, transaction: Transactio
         outputs_header.finish_item()
     transaction_header.finish_item()
 
-    outputs_data_header = HeaderBuilder(buffer, len(transaction['outputs_data']))
+    outputs_data_header = HeaderBuilder(
+        buffer, len(transaction['outputs_data']))
     for output_data in transaction['outputs_data']:
         extend_bytes_fixvec(buffer, output_data)
         outputs_data_header.finish_item()
