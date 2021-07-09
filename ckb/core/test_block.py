@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from ckb.block import transactions_root, proposals_hash, uncles_hash, from_template
-from ckb.header import header_hash
+from .block import transactions_root, proposals_hash, uncles_hash, from_template
+from .header import header_hash
 
 TEST_BLOCK = {'header': {'compact_target': '0x1a08a97e',
                          'dao': '0xc8f46621be95a12eb297027e08872300aee0b612a31800000077d034b838ff06',
