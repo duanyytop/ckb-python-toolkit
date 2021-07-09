@@ -1,3 +1,0 @@
-jsonrpcclient[requests]
-typing-extensions
-coincurve

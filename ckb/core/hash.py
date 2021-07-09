@@ -13,3 +13,6 @@ def ckb_hash(message: bytes) -> HexH256:
     hasher = ckb_hasher()
     hasher.update(message)
     return '0x' + hasher.hexdigest()
+
+def ckb_blake160(message: bytes) -> HexH256:
+    return ckb_hash(message)[0:42]
