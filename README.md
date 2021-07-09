@@ -2,6 +2,12 @@
 
 > The library works only with Python 3.
 
+## Installation
+
+```
+pip install ckb-toolkit
+```
+
 ## Quick Start
 
 Install in a virtualenv
