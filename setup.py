@@ -14,7 +14,7 @@ with io.open(VERSION, encoding='utf-8') as f:
     exec(f.read(), package)
     version = package['VERSION']
 
-setup(name='ckb-tools',
+setup(name='ckb-toolkit',
       version=version,
       description='Nervos CKB Tools',
       long_description=long_description,
