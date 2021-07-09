@@ -33,3 +33,4 @@ lmake.mk
 .ignore
 .tool-versions
 tempCodeRunnerFile
+*.egg-info
