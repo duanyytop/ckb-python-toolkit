@@ -2,7 +2,7 @@ from ckb.core.signer import sign_tx
 from ckb.core.rpc import RPCClient
 from ckb.core.hash import ckb_blake160
 from ckb.core.hex_coder import hex_to_bytes, hex_from_bytes
-from ckb.address.address import generateShortAddress
+from ckb.address.address import generateShortAddress, generateFullAddress
 from coincurve import PublicKey, PrivateKey
 import json
 
@@ -13,15 +13,16 @@ private_key = 'd52a6cb37ce90aed79a96ea9976668fbdbe16d6eac3611d5b15de388168da2c3'
 public_key = PrivateKey.from_hex(private_key).public_key.format()
 args = ckb_blake160(public_key)[2:]
 address = generateShortAddress(args, network = "testnet")
-
 print(address)
 
-tx = sign_tx(unsigned_raw_tx, private_key)
+lock = {'code_hash': '9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8', 'hash_type': 'type', 'args': args}
+full_address = generateFullAddress(lock, network = "testnet")
+print(full_address)
 
+tx = sign_tx(unsigned_raw_tx, private_key)
 print(tx)
 
-# rpc = RPCClient('https://testnet.ckb.dev/rpc')
+rpc = RPCClient('https://testnet.ckb.dev/rpc')
+tx_hash = rpc.request('send_transaction', tx)
 
-# tx_hash = rpc.request('send_transaction', tx)
-
-# print(tx_hash)
+print(tx_hash)

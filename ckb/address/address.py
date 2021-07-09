@@ -1,3 +1,7 @@
+"""
+ https://github.com/CipherWang/pyckbwallet/blob/master/address.py
+"""
+
 from . import segwit_addr as sa
 from ..core.types import Script
 
@@ -23,8 +27,8 @@ def generateShortAddress(args, code_index = CODE_INDEX_SECP256K1_SINGLE, network
     return addr
 
 def generateFullAddress(script: Script, network = "mainnet"):
-    format_type = {"Data" : bytes([FORMAT_TYPE_FULL_DATA]),
-                 "Type" : bytes([FORMAT_TYPE_FULL_TYPE])}[script['hash_type']]
+    format_type = {"data" : bytes([FORMAT_TYPE_FULL_DATA]),
+                 "type" : bytes([FORMAT_TYPE_FULL_TYPE])}[script['hash_type']]
     hrp = {"mainnet": "ckb", "testnet": "ckt"}[network]
     hrpexp =  sa.bech32_hrp_expand(hrp)
     payload = bytes(format_type) + bytes.fromhex(script['code_hash'])
