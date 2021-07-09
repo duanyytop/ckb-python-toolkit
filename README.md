@@ -18,3 +18,9 @@ Example
 from ckb.rpc import rpc
 rpc.get_tip_block_number()
 ```
+
+The [example.py](https://github.com/duanyytop/ckb-python-toolkit/blob/master/example.py) shows how to generate the CKB address and sign the transaction, and then send the transaction to the CKB node.
+
+```
+python3 example.py
+```
