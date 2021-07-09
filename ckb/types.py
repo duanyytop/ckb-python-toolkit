@@ -133,3 +133,9 @@ BlockTemplate = TypedDict('BlockTemplate', {
     'work_id': HexInt,
     'dao': HexByte32
 })
+
+WitnessArgs = TypedDict('WitnessArgs', {
+    'lock': HexBytes,
+    'input_type': HexBytes,
+    'output_type': HexBytes,
+})
