@@ -8,13 +8,13 @@ README = os.path.join(HERE, 'README.md')
 with io.open(README, encoding='utf-8') as f:
     long_description = f.read()
 
-VERSION = os.path.join(HERE, 'ckb', 'version.py')
+VERSION = os.path.join(HERE, 'ckb_toolkit', 'version.py')
 with io.open(VERSION, encoding='utf-8') as f:
     package = {}
     exec(f.read(), package)
     version = package['VERSION']
 
-setup(name='ckb_toolkit',
+setup(name='ckb-toolkit',
       version=version,
       description='Nervos CKB Toolkit',
       long_description=long_description,
