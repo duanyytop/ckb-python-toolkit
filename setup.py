@@ -16,7 +16,7 @@ with io.open(VERSION, encoding='utf-8') as f:
 
 setup(name='ckb_toolkit',
       version=version,
-      description='Nervos CKB Tools',
+      description='Nervos CKB Toolkit',
       long_description=long_description,
       long_description_content_type='text/markdown',
       url='https://github.com/duanyytop/ckb-python-toolkit',
