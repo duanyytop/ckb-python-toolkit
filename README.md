@@ -21,7 +21,7 @@ pip install -r requirements.txt
 Example
 
 ```
-from ckb.rpc import rpc
+from ckb_toolkit.core.rpc import rpc
 rpc.get_tip_block_number()
 ```
 
