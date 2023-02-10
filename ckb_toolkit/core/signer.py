@@ -22,7 +22,7 @@ def sign_tx(tx: Transaction, private_key: HexBytes) -> Transaction:
     witnesses = tx['witnesses'][1:]
     for witness in witnesses:
         len_buffer = bytearray()
-        extend_uint64(len_buffer, len(witness))
+        extend_uint64(len_buffer, hex(len(witness)))
         hasher.update(len_buffer)
         hasher.update(hex_to_bytes(witnesses))
 
